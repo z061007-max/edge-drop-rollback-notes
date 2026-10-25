@@ -1,0 +1,8 @@
+# Default deny: only reviewed, authored text is allowed.
+*
+!README.md
+!ROLLBACK.md
+!TROUBLESHOOTING.md
+!INSTALLER.md
+!PRIVACY.md
+!.gitignore
