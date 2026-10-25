@@ -11,11 +11,11 @@
 - 书签、下载历史、Drop 传输内容、OneDrive 文件。
 - 原始安装日志、备份日志、截图、完整聊天记录。
 - 本机用户名、绝对个人路径、设备名、用户 SID、设备专属任务标识。
-- 安装包、可执行文件、压缩包和其他二进制备份。
+- 本机可执行程序备份、待更新文件和任何个人二进制备份。完整发行包只另附校验过的通用微软 MSI，不附本机应用程序目录。
 
 ## 发布方法
 
-只发布根目录的 README.md、ROLLBACK.md、TROUBLESHOOTING.md、INSTALLER.md、PRIVACY.md、.gitignore，以及 oneclick/ 中人工编写的两个 PowerShell 脚本、两个 CMD 启动文件和 README.md。MSI 和本地运行生成的任何备份都不在公开名单中。公开材料没有从浏览器资料中提取账号信息。
+只发布根目录的 README.md、ROLLBACK.md、TROUBLESHOOTING.md、INSTALLER.md、PRIVACY.md、.gitignore，以及 oneclick/ 中人工编写的两个 PowerShell 脚本、四个 CMD 启动文件、README.md 和 VERIFICATION.txt。MSI 不进入 Git 源码，仅作为完整发行 ZIP 中经过哈希与微软签名核验的文件；本地运行生成的任何备份都不公开。公开材料没有从浏览器资料中提取账号信息。
 
 发布前检查文件名单、文本内容及可能的用户名、邮箱、凭据模式。该检查不是对以后提交内容的自动保证；后续 Issue、附件和提交也应独立审查。
 

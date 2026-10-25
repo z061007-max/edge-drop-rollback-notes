@@ -1,4 +1,4 @@
-param([string]$StateFile,[switch]$NoPause)
+﻿param([string]$StateFile,[switch]$NoPause)
 $ErrorActionPreference = 'Stop'
 try {
     $principal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
@@ -8,9 +8,15 @@ try {
     }
     if (!$StateFile) {
         $base = Join-Path ([Environment]::GetFolderPath('MyDocuments')) 'EdgeRollbackLocal'
-        Write-Host 'Select the update-state.clixml from the specific rollback run to restore.'
-        Write-Host "Local backup root: $base"
-        $StateFile = (Read-Host 'Paste the FULL state file path').Trim('"')
+        Write-Host '请选择需要恢复的那次回退记录；不读取浏览资料。'
+        Write-Host "本地备份根目录：$base"
+        Add-Type -AssemblyName System.Windows.Forms
+        $picker = New-Object System.Windows.Forms.OpenFileDialog
+        $picker.Filter = 'Update state (update-state.clixml)|update-state.clixml'
+        if(Test-Path -LiteralPath $base) { $picker.InitialDirectory = $base }
+        if($picker.ShowDialog() -ne [System.Windows.Forms.DialogResult]::OK) { $picker.Dispose(); exit 0 }
+        $StateFile = $picker.FileName
+        $picker.Dispose()
     }
     $state = Import-Clixml -LiteralPath $StateFile
     foreach($s in $state.Services) {
@@ -25,11 +31,11 @@ try {
         if($t.Enabled) { Enable-ScheduledTask -TaskName $t.TaskName -TaskPath $t.TaskPath | Out-Null }
         else { Disable-ScheduledTask -TaskName $t.TaskName -TaskPath $t.TaskPath | Out-Null }
     }
-    Write-Host 'Captured service/task settings restored. Previously disabled items remain disabled.'
-    Write-Host 'No registry policy was changed by this tool. Installer-created tasks are not removed.'
-    if(!$NoPause) { Read-Host 'Press Enter to finish' | Out-Null }
+    Write-Host '已应用捕获的服务和任务设置。之前就禁用的项目仍保持禁用。'
+    Write-Host '本工具未修改注册表策略；不会删除安装器新建的任务。'
+    if(!$NoPause) { Read-Host '按回车完成' | Out-Null }
 } catch {
-    Write-Host "STOP: $($_.Exception.Message)" -ForegroundColor Red
-    if(!$NoPause) { Read-Host 'Press Enter to close' | Out-Null }
+    Write-Host "已停止：$($_.Exception.Message)" -ForegroundColor Red
+    if(!$NoPause) { Read-Host '按回车关闭' | Out-Null }
     exit 1
 }

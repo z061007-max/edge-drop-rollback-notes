@@ -1,0 +1,23 @@
+Edge Drop rollback bundle v0.2.0-preview
+
+Verified:
+- PowerShell syntax: 2 scripts parsed successfully by Windows PowerShell.
+- Installer argument helper includes REINSTALL=ALL REINSTALLMODE=vomus ALLOWDOWNGRADE=1.
+- Exit 0 + 151.0.4129.107 is accepted.
+- Exit 0 + 156.0.4314.42 is rejected.
+- Exit 1603 + 151.0.4129.107 is rejected.
+- Exit 3010 + 151.0.4129.107 is accepted (restart requested).
+- Both Chinese CMD entry points exist.
+- Included MSI signature: Valid; publisher Microsoft Corporation.
+- MSI SHA256: B75F03B87DFB0CBC85BA2C0858C632511B17355F42563A43FCA5368100FFE0FE
+- Public package contains allowlisted authored text plus this exact MSI only.
+
+Not verified:
+- Real installation, backup failure recovery and update-settings restore as a complete end-to-end run of this tool.
+- Reboot persistence, every Windows edition, managed devices or long-term Drop availability.
+
+User-reported reference case on 2026-10-25:
+Windows 11 Home; manually executed reinstall parameters returned 0 and file version 151.0.4129.107; Drop worked.
+This is not a claim that the packaged tool has passed an end-to-end installation test.
+
+No real browser installation, service or task changes were executed while building this bundle.

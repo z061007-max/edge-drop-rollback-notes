@@ -20,4 +20,4 @@ Get-AuthenticodeSignature -LiteralPath 'D:\Installers\MicrosoftEdgeEnterpriseX64
     Format-List Status, StatusMessage, SignerCertificate
 ```
 
-本仓库未重新分发微软 MSI、EXE、DLL 或本机待更新文件。它们不是个人浏览数据，但不需要把整套应用程序备份公开，才能分享排错方法。本地已验证安装包应自行保留。
+Git 源码不存放微软二进制。v0.2.0-preview 的完整发行 ZIP 附带上表指定的微软 MSI，以方便下载后直接使用；微软软件仍适用其自身许可，不属于工具代码的授权范围。不附带本机待更新 EXE、DLL、浏览器用户资料或日志。
