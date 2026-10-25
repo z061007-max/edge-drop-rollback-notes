@@ -37,3 +37,7 @@
 - [Windows Installer REINSTALLMODE](https://learn.microsoft.com/en-us/windows/win32/msi/reinstallmode)
 - [Microsoft Edge 更新策略](https://learn.microsoft.com/en-us/deployedge/microsoft-edge-update-policies)
 - [Microsoft Edge 企业版下载](https://www.microsoft.com/en-us/edge/business/download)
+
+## 双击回退工具
+
+参见 [oneclick 使用说明](oneclick/README.md)。完整解压工具目录，把匹配的官方 MSI 放到同一目录，再双击 Start-Rollback.cmd。工具自动检查安装包、备份、临时暂停更新并校验版本，仍需要管理员及 YES 确认。Restore-Updates.cmd 用于恢复捕获的更新设置。新工具通过语法与逻辑检查，尚未进行真实安装端到端测试。

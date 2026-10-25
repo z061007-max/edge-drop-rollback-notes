@@ -6,3 +6,8 @@
 !INSTALLER.md
 !PRIVACY.md
 !.gitignore
+
+!oneclick/
+!oneclick/*.ps1
+!oneclick/*.cmd
+!oneclick/README.md
